@@ -13,7 +13,7 @@ class TodoList extends React.Component {
       <ul>
         {dummyData.map(task => <Todo task={task} />)}
       </ul>
-    )
+    );
   }
 }
 
@@ -25,8 +25,38 @@ class Todo extends React.Component {
   render() {
     return (
       <li><button>X</button> {this.props.task}</li>
-    )
+    );
   }
 }
 
-ReactDOM.render(<TodoList />, document.getElementById('root'));
+class InputLine extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" placeholder="task" />
+        <button type="submit">Add todo</button>
+      </div>
+    );
+  }
+}
+
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <InputLine />
+        <TodoList />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<TodoApp />, document.getElementById('root'));
